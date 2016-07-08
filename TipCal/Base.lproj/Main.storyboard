@@ -25,6 +25,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3x-ok-NWp">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-S7-Wbl">
+                                                <rect key="frame" x="155" y="477" width="291" height="31"/>
+                                                <connections>
+                                                    <action selector="adjustTipPercentage:" destination="BYZ-38-t0r" eventType="valueChanged" id="iZC-D6-aEt"/>
+                                                </connections>
+                                            </slider>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yvN-AK-exH">
                                                 <rect key="frame" x="157" y="150" width="287" height="300"/>
                                                 <subviews>
@@ -34,7 +40,13 @@
                                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Bill amount to Calculate tip" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNW-mb-SSG">
-                                                        <rect key="frame" x="0.0" y="140" width="287" height="21"/>
+                                                        <rect key="frame" x="0.0" y="96" width="287" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Percentage: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfI-uv-0Cw">
+                                                        <rect key="frame" x="81" y="183" width="125" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -52,7 +64,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstItem="mqu-S7-Wbl" firstAttribute="width" secondItem="yvN-AK-exH" secondAttribute="width" id="12D-HQ-N8c"/>
                                             <constraint firstItem="yvN-AK-exH" firstAttribute="centerY" secondItem="R3x-ok-NWp" secondAttribute="centerY" id="2pi-B3-Z0v"/>
+                                            <constraint firstItem="mqu-S7-Wbl" firstAttribute="top" secondItem="yvN-AK-exH" secondAttribute="bottom" constant="27" id="95q-XX-9zR"/>
+                                            <constraint firstItem="mqu-S7-Wbl" firstAttribute="centerX" secondItem="yvN-AK-exH" secondAttribute="centerX" id="OBQ-4q-5xZ"/>
                                             <constraint firstItem="yvN-AK-exH" firstAttribute="centerX" secondItem="R3x-ok-NWp" secondAttribute="centerX" id="lqx-lK-Fes"/>
                                             <constraint firstItem="yvN-AK-exH" firstAttribute="height" secondItem="R3x-ok-NWp" secondAttribute="height" multiplier="1:2" id="qpE-fM-Pu4"/>
                                         </constraints>
@@ -82,7 +97,9 @@
                     <connections>
                         <outlet property="billAmountTextField" destination="mEl-8v-pTy" id="kjf-8w-Y9e"/>
                         <outlet property="scrollView" destination="rzg-aQ-mzx" id="vuz-9Y-kSx"/>
-                        <outlet property="tipLabel" destination="cNW-mb-SSG" id="yD1-HS-r1Z"/>
+                        <outlet property="slider" destination="mqu-S7-Wbl" id="vYf-f5-adr"/>
+                        <outlet property="tipPercentLabel" destination="AfI-uv-0Cw" id="7O8-Bn-sB9"/>
+                        <outlet property="totalLabel" destination="cNW-mb-SSG" id="OYN-hA-WZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

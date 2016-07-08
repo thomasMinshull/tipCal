@@ -10,13 +10,17 @@
 
 #define INITIAL_LABEL_TEXT @"Enter your Bill amount to Calculate tip"
 #define LABEL_PREFIX @"Your Total bill, inlcuding tip comes to: "
+#define TIP_LABEL_PREFIX @"Tip Percentage: "
 
 @interface ViewController ()
-@property (assign, nonatomic) float tipPercentage;
-@property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
-@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (assign, nonatomic, readonly) float tipAmount;
+@property (assign, nonatomic) float tipPercentage;
+@property (weak, nonatomic) IBOutlet UILabel *tipPercentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+
 
 @end
 
@@ -27,11 +31,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.tipPercentage = 0.15;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.tipPercentage = 0.15;
+    self.slider.value = self.tipPercentage;
+    [self adjustTipPercentage:nil]; // sets label
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyBoardDidShow:)
                                                  name:UIKeyboardDidShowNotification
@@ -62,14 +68,18 @@
 }
 
 - (IBAction)CalculateTip:(id)sender {
-    if (self.tipAmount == 0) {
-        [self.tipLabel setText:INITIAL_LABEL_TEXT];
+    if (self.totalLabel == 0) {
+        [self.totalLabel setText:INITIAL_LABEL_TEXT];
     } else {
-        [self.tipLabel setText:[NSString stringWithFormat:@"%@%.2f", LABEL_PREFIX, self.tipAmount]];
+        [self.totalLabel setText:[NSString stringWithFormat:@"%@%.2f", LABEL_PREFIX, self.tipAmount]];
     }
    
 }
 
+- (IBAction)adjustTipPercentage:(UISlider *)sender {
+    self.tipPercentage = self.slider.value;
+    [self.tipPercentLabel setText:[NSString stringWithFormat:@"%@%.2f", TIP_LABEL_PREFIX, self.tipPercentage]];
+}
 #pragma mark -KeyBoard Handling
 
 - (void)keyBoardDidShow:(NSNotification *)paramNotification {
