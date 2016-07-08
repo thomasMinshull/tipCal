@@ -38,8 +38,12 @@
                                                         <rect key="frame" x="96" y="0.0" width="95" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                        <connections>
+                                                            <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="71Y-Pp-oUA"/>
+                                                            <action selector="billAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Ig4-tu-DmA"/>
+                                                        </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Bill amount to Calculate tip" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNW-mb-SSG">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Bill amount to Calculate tip" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNW-mb-SSG">
                                                         <rect key="frame" x="0.0" y="96" width="287" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -52,13 +56,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czF-pf-rJ0">
-                                                        <rect key="frame" x="99" y="270" width="90" height="30"/>
+                                                        <rect key="frame" x="0.0" y="270" width="287" height="30"/>
                                                         <state key="normal" title="Calculate Tip"/>
                                                         <connections>
-                                                            <action selector="CalculateTip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hc5-G8-HqM"/>
+                                                            <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rZ8-Ca-HIy"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="czF-pf-rJ0" firstAttribute="width" secondItem="yvN-AK-exH" secondAttribute="width" id="csr-7N-k4l"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,6 +73,8 @@
                                         <constraints>
                                             <constraint firstItem="mqu-S7-Wbl" firstAttribute="width" secondItem="yvN-AK-exH" secondAttribute="width" id="12D-HQ-N8c"/>
                                             <constraint firstItem="yvN-AK-exH" firstAttribute="centerY" secondItem="R3x-ok-NWp" secondAttribute="centerY" id="2pi-B3-Z0v"/>
+                                            <constraint firstItem="cNW-mb-SSG" firstAttribute="leadingMargin" relation="greaterThanOrEqual" secondItem="R3x-ok-NWp" secondAttribute="leading" id="7xZ-MA-3NT"/>
+                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="cNW-mb-SSG" secondAttribute="trailing" id="8LN-Qd-R6C"/>
                                             <constraint firstItem="mqu-S7-Wbl" firstAttribute="top" secondItem="yvN-AK-exH" secondAttribute="bottom" constant="27" id="95q-XX-9zR"/>
                                             <constraint firstItem="mqu-S7-Wbl" firstAttribute="centerX" secondItem="yvN-AK-exH" secondAttribute="centerX" id="OBQ-4q-5xZ"/>
                                             <constraint firstItem="yvN-AK-exH" firstAttribute="centerX" secondItem="R3x-ok-NWp" secondAttribute="centerX" id="lqx-lK-Fes"/>
